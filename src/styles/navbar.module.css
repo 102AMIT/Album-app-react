@@ -1,10 +1,10 @@
 
 *{
-    color:rgb(36, 149, 149)
+    color:rgb(36, 149, 149);
+    box-sizing: border-box
 }
 .navContainer{
-    padding:20px;
-    height:30px;
+    padding: 20px;
     width:100%;
     background: #00c3ff;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ffff1c, #00c3ff);  /* Chrome 10-25, Safari 5.1-6 */
@@ -16,6 +16,4 @@
     font-size: 20px;
     cursor: pointer;
 }
-.navdate{
-    margin-right: 40px;
-}
+

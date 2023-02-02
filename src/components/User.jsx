@@ -2,23 +2,22 @@ import React from 'react'
 import style from '../styles/user.module.css';
 const User = (data) => {
     console.log(data,"dataaaa");
-    const {id , title ,userId } =data.data;
+    const {id , title  } =data.data;
   return (
-        <div>
+        
         <div className={style.container}>
-            <div className="singlePost">
-            <div>
-            <span>UserId</span><span>{userId}</span>
+            <div className={style.singlePost}>
+            <span>{id}</span>.
+            <span className={style.userTitle}>{title}</span>
             </div>
-            <div>
-            <span>Id</span><span>{id}</span>
-            </div>
-            <div>
-            <span>Title</span><span>{title}</span>
-            </div>
+            <div className={style.btn}>
+            <button className={style.btnEdit}>Edit</button>
+            <button className={style.btnDelete}>Delete</button>
             </div>
         </div>
-        </div>
+            
+        
+        
   )
 }
 
