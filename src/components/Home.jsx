@@ -1,15 +1,20 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+
 import User from './User';
 import style from '../styles/user.module.css';
 
 const Home = () => {
   const [adding, setAdding] = useState(false);
   const [data, setData] = useState([]);
+  const [userId, setUserID] = useState("");
+  const [title, setTitle] = useState("");
+
+  // initial api call fetching data
   async function fetchApi() {
 
     let getdata = await axios.get('https://jsonplaceholder.typicode.com/albums');
-    console.log(getdata)
     setData(getdata.data);
   }
 
@@ -17,22 +22,31 @@ const Home = () => {
     fetchApi();
   }, [])
 
-  const setUserID = (e) => {
-    console.log(e);
+  // adding album 
+  const addAlbum = async () => {
+    if(userId === "" || title === ""){
+      return toast.error("Please Enter Data")
+    }
+    setAdding(false);
+    const postdata = await axios.post('https://jsonplaceholder.typicode.com/albums',{userId:userId,title:title})
+    console.log(postdata.data);
+    data.push(postdata.data);
+    
   }
-  const setTitle = e => {
-    console.log(e);
-  }
+  useEffect(()=>{
+    setData(data); 
+    toast.success("Album added successfully");
+  },[data])
+
+  // remove the album
 
   const removeAlbum = (id) => {
 
     const newList = data.filter(album => id !== album.id)
     setData(newList);
+    toast.success("Album removed successfully");
   }
-
-  const addAlbum = (id) => {
     
-  }
 
   return (
     <div >
@@ -50,7 +64,8 @@ const Home = () => {
               <input className={style.formfield} type="text" onChange={(e) => setTitle(e.target.value)} />
             </div>
 
-            <input type="submit" onClick={() => setAdding(false)} />
+            {/* <input type="submit" onClick={() => setAdding(false)} /> */}
+            <input type="submit" onClick={addAlbum} />
           </>
         }
         {
