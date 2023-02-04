@@ -5,10 +5,11 @@ import User from './User';
 import style from '../styles/user.module.css';
 
 const Home = () => {
-  const [adding, setAdding] = useState(false);
   const [data, setData] = useState([]);
-  const [userId, setUserID] = useState("");
   const [title, setTitle] = useState("");
+  const [userId, setUserID] = useState("");
+  const [adding, setAdding] = useState(false);
+
 
   // initial api call fetching data
   async function fetchApi() {
@@ -23,12 +24,15 @@ const Home = () => {
 
   // adding album 
   const addAlbum = async () => {
-    if(userId === "" && title === ""){
+    
+    setAdding(false);
+    if(title === "" || userId === ""){
       return toast.error("Please Enter Data")
     }
-    setAdding(false);
+    
     
     const postdata = await axios.post('https://jsonplaceholder.typicode.com/posts',{userId:userId,title:title})
+    
     const addedData = [...data, postdata.data];
     setData(addedData); 
     toast.success("Album added successfully");
