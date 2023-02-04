@@ -24,11 +24,13 @@ There is an Update button on the each and every card , on clicking Update button
 There is a Delete button on the each and every card , on clicking Delete button User can delete the album card.
 
 Home Page Screenshot
-![Alt text](https://file%2B.vscode-resource.vscode-cdn.net/c%3A/Users/Amit/Downloads/album%20app.JPG?version%3D1675438706826)
+
+![album app](https://user-images.githubusercontent.com/96186566/216785553-fd7d66bf-1ff1-4b9c-99b1-327d664e1794.JPG)
 
 On Clicking add New Album , home page will show the input component .
 
-![Alt text](../../../Downloads/album%20app1.JPG)
+![album app1](https://user-images.githubusercontent.com/96186566/216785558-e3e492a2-6c20-4b96-873f-e0422c1fd56a.JPG)
+
 
 Available Scripts
 In the project directory, you can clone and save it to local system :
