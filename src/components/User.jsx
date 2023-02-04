@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import style from '../styles/user.module.css';
 import axios from 'axios';
+import {toast} from 'react-toastify'
 const User = (props) => {
 
   const {data,removeAlbum} =props
@@ -21,13 +22,14 @@ const User = (props) => {
     console.log(updateData.data.title);
     setUpdateTitle(updateData.data.title);
     setEditing(false);
-
+    toast.success("Data updated successfully")
   }
   return (
 
     <div className={style.container}>
     { 
       editing &&  <>
+            
         <div className={style.singlePost}>
         <span>{id}</span>.
         <input className={style.userTitle} value={input} onChange={(e) =>setInput(e.target.value)}/>
