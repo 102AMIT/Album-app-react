@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-
 import User from './User';
 import style from '../styles/user.module.css';
 
@@ -13,35 +12,33 @@ const Home = () => {
 
   // initial api call fetching data
   async function fetchApi() {
-
-    let getdata = await axios.get('https://jsonplaceholder.typicode.com/albums');
-    setData(getdata.data);
+      let getdata = await axios.get('https://jsonplaceholder.typicode.com/albums');
+      setData(getdata.data);
   }
-
+  // initial render
   useEffect(() => {
     fetchApi();
   }, [])
 
+
   // adding album 
   const addAlbum = async () => {
-    if(userId === "" || title === ""){
+    if(userId === "" && title === ""){
       return toast.error("Please Enter Data")
     }
     setAdding(false);
-    const postdata = await axios.post('https://jsonplaceholder.typicode.com/albums',{userId:userId,title:title})
-    console.log(postdata.data);
-    data.push(postdata.data);
     
-  }
-  useEffect(()=>{
-    setData(data); 
+    const postdata = await axios.post('https://jsonplaceholder.typicode.com/posts',{userId:userId,title:title})
+    const addedData = [...data, postdata.data];
+    setData(addedData); 
     toast.success("Album added successfully");
-  },[data])
+  }
+  
+ 
 
   // remove the album
 
   const removeAlbum = (id) => {
-
     const newList = data.filter(album => id !== album.id)
     setData(newList);
     toast.success("Album removed successfully");
