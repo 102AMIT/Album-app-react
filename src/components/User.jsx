@@ -12,9 +12,9 @@ const User = (props) => {
 
 
   const deleteAlbum =async () =>{
-    let albumId=await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    console.log(albumId.data.id);
-    removeAlbum(albumId.data.id);
+    await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    console.log(data.id);
+    removeAlbum(data.id);
   }
 
   const updateInput = async() =>{
